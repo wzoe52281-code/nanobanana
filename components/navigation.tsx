@@ -2,9 +2,12 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { LoginButton } from "@/components/ui/login-button";
+import { useUser } from "@/components/user-context";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const { user, isLoading, signOut } = useUser();
 
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -32,6 +35,37 @@ export default function Navigation() {
             <Link href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
               FAQ
             </Link>
+            
+            {/* Auth Section */}
+            <div className="flex items-center gap-2">
+              {isLoading ? (
+                <div className="px-4 py-2 text-sm">Loading...</div>
+              ) : user ? (
+                <div className="flex items-center gap-4">
+                  <span className="hidden sm:inline text-sm text-muted-foreground max-w-[120px] truncate" title={user.email}>
+                    {user.email}
+                  </span>
+                  <button 
+  onClick={() => signOut()} 
+  className="px-4 py-2 text-sm bg-destructive text-white/90 rounded-full hover:bg-destructive/90 transition-colors"
+>
+  Sign Out
+</button>
+                </div>
+              ) : (
+                <LoginButton>
+                  <span className="flex items-center gap-2 px-4 py-2 text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                      <path 
+                        fill="#fff" 
+                        d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"
+                      />
+                    </svg>
+                    Sign In
+                  </span>
+                </LoginButton>
+              )}
+            </div>
           </div>
 
           {/* CTA Button */}
@@ -81,6 +115,40 @@ export default function Navigation() {
             >
               FAQ
             </Link>
+            
+            {/* Mobile Auth Section */}
+            <div className="px-4 py-2 border-t border-border pt-4">
+              {isLoading ? (
+                <div className="py-2 text-center text-sm">Loading...</div>
+              ) : user ? (
+                <div className="space-y-3">
+                  <p className="text-sm text-muted-foreground break-all px-2">
+                    Signed in as: {user.email}
+                  </p>
+                  <button 
+                    onClick={() => {
+                      signOut();
+                      setIsOpen(false); // Close menu after sign out
+                    }} 
+                    className="w-full px-4 py-2 text-sm bg-destructive text-white/90 rounded-full hover:bg-destructive/90 transition-colors"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              ) : (
+                <LoginButton>
+                  <span className="flex items-center justify-center gap-2 w-full px-4 py-2 text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                      <path 
+                        fill="#fff" 
+                        d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"
+                      />
+                    </svg>
+                    Sign In with Google
+                  </span>
+                </LoginButton>
+              )}
+            </div>
           </div>
         )}
       </div>

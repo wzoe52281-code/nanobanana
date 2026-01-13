@@ -1,3 +1,4 @@
+import { UserProvider } from '@/components/user-context';
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
@@ -39,8 +40,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        {children}
-        <Analytics />
+        <UserProvider>
+          {children}
+          <Analytics />
+        </UserProvider>
       </body>
     </html>
   )

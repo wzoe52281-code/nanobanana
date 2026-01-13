@@ -1,2 +1,9 @@
 # nanobanana
 clone-nanobanana
+
+# supabase 谷歌登录
+NEXT_PUBLIC_OPENROUTER_API_KEY=
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_0KKHW4r4BASDfbmvLrKMjg_Tv4aG...
