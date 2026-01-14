@@ -1,4 +1,3 @@
-// app/payment-success/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -11,20 +10,23 @@ export default function PaymentSuccessPage() {
   const router = useRouter();
   const [countdown, setCountdown] = useState(5);
 
+  // Timer effect (state only)
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          router.push('/');
-          return 0;
-        }
-        return prev - 1;
-      });
+    if (countdown <= 0) return;
+
+    const timer = setTimeout(() => {
+      setCountdown(prev => prev - 1);
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, [router]);
+    return () => clearTimeout(timer);
+  }, [countdown]);
+
+  // Navigation effect (side effect)
+  useEffect(() => {
+    if (countdown === 0) {
+      router.push('/');
+    }
+  }, [countdown, router]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted p-4">
@@ -42,12 +44,9 @@ export default function PaymentSuccessPage() {
           <p className="text-sm text-muted-foreground">
             You will be redirected to the homepage in {countdown} seconds.
           </p>
-          
+
           <div className="pt-4">
-            <Button 
-              onClick={() => router.push('/')} 
-              className="w-full"
-            >
+            <Button onClick={() => router.push('/')} className="w-full">
               <Home className="mr-2 h-4 w-4" />
               Go to Homepage
             </Button>
