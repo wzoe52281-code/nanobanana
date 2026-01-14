@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import { handleCreemWebhook } from '@/lib/apis/creem-api';
+import { handleCreemWebhook } from '@/lib/apis/creem-server';
 
 export async function POST(request: NextRequest) {
   try {
