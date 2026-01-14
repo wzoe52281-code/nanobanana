@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       baseURL: "https://openrouter.ai/api/v1",
       apiKey: process.env.OPENROUTER_API_KEY,
       defaultHeaders: {
-        "HTTP-Referer": process.env.HTTP_REFERER || "http://localhost:3000", // Optional. Site URL for rankings on openrouter.ai.
+        "HTTP-Referer": window.location.origin || "http://localhost:3000", // Optional. Site URL for rankings on openrouter.ai.
         "X-Title": process.env.X_TITLE || "Nano Banana Clone", // Optional. Site title for rankings on openrouter.ai.
       },
     });

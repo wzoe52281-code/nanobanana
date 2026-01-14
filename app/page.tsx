@@ -5,6 +5,7 @@ import Features from "@/components/features"
 import Showcase from "@/components/showcase"
 import Reviews from "@/components/reviews"
 import FAQ from "@/components/faq"
+import Pricing from "@/components/pricing"
 import Footer from "@/components/footer"
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Features />
       <Showcase />
       <Reviews />
+      <Pricing />
       <FAQ />
       <Footer />
     </main>

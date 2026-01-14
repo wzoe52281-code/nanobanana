@@ -35,6 +35,9 @@ export default function Navigation() {
             <Link href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
               FAQ
             </Link>
+            <Link href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+              Pricing
+            </Link>
             
             {/* Auth Section */}
             <div className="flex items-center gap-2">
@@ -114,6 +117,12 @@ export default function Navigation() {
               className="block px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
             >
               FAQ
+            </Link>
+            <Link
+              href="/pricing"
+              className="block px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+            >
+              Pricing
             </Link>
             
             {/* Mobile Auth Section */}
