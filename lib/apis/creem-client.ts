@@ -1,8 +1,8 @@
 // Client-side only constants and types
 export const PRODUCT_IDS = {
-  FREE: 'prod_4JDhpJbNRTu3cbq5uvCFK2',
-  PRO: 'prod_4JDhpJbNRTu3cbq5uvCFK',
-  TEAM: 'prod_4JDhpJbNRTu3cbq5uvCFK',
+  FREE: 'prod_5LE5agJB6audexGjr8nPXm',
+  PRO: 'prod_5LE5agJB6audexGjr8nPXm',
+  TEAM: 'prod_5LE5agJB6audexGjr8nPXm',
 };
 
 // Client-side interfaces

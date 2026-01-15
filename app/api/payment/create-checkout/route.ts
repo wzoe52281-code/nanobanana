@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     const { planName, email, userId, productId } = await req.json();
 
     // Validate the productId parameter
-    const validProductIds = ['prod_4JDhpJbNRTu3cbq5uvCFK'];
+    const validProductIds = ['prod_5LE5agJB6audexGjr8nPXm'];
     console.log('productId', productId);
     if (!validProductIds.includes(productId)) {
       return Response.json({ error: 'Invalid product' }, { status: 400 });
